@@ -6,12 +6,12 @@
     <x:Property sap2010:Annotation.AnnotationText="Allow the optional addition of information about the transaction item." Name="out_TransactionField1" Type="OutArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="Allow the optional addition of information about the transaction item." Name="out_TransactionField2" Type="OutArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="Transaction ID used for information and logging purposes. Ideally, the ID should be unique for each transaction. " Name="out_TransactionID" Type="OutArgument(x:String)" />
-    <x:Property Name="out_dtTransactionData" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="io_dt_TransactionData" Type="InOutArgument(sd:DataTable)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1207,2225</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1176,2225</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetTransactionData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -169,12 +169,8 @@
                       </sap:WorkflowViewStateService.ViewState>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Framework\GetDatatableData.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Framework\GetDatatableData.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_TransactionData">
-                            <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="out_dtTransactionData" />
-                          </OutArgument>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                            <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                          </InArgument>
+                          <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_TransactionData">[io_dt_TransactionData]</OutArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                     </Sequence>
@@ -222,7 +218,7 @@
         <Sequence sap2010:WorkflowViewState.IdRef="Sequence_28" />
       </If.Else>
     </If>
-    <If Condition="[in_TransactionNumber &lt;= out_dtTransactionData.RowCount]" DisplayName="If Any Transactions Left" sap:VirtualizedContainerService.HintSize="510,522" sap2010:WorkflowViewState.IdRef="If_8">
+    <If Condition="[in_TransactionNumber &lt;= io_dt_TransactionData.RowCount]" DisplayName="If Any Transactions Left" sap:VirtualizedContainerService.HintSize="510,522" sap2010:WorkflowViewState.IdRef="If_8">
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_29">
           <sap:WorkflowViewStateService.ViewState>
@@ -235,7 +231,7 @@
               <OutArgument x:TypeArguments="sd:DataRow">[out_TransactionItem]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="sd:DataRow" xml:space="preserve">[out_dtTransactionData.rows(in_TransactionNumber-  1)]</InArgument>
+              <InArgument x:TypeArguments="sd:DataRow" xml:space="preserve">[io_dt_TransactionData.rows(in_TransactionNumber-  1)]</InArgument>
             </Assign.Value>
           </Assign>
         </Sequence>
