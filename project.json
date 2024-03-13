@@ -1,13 +1,14 @@
 {
   "name": "ExtendedREFrameworkTemplate_ColectorExcel",
-  "projectId": "0da3305c-ebd4-4428-b463-18160852d759",
-  "description": "REFramework customizado para proyecto. Template customizado para procesos de tipo \"Colector\" en los que el transaction item se lee a partir de un excel",
+  "projectId": "c05f610f-0e69-4913-9cd1-402d20f8c874",
+  "description": "REFramework customizado con codigos de error. Template base",
   "main": "Main.xaml",
   "dependencies": {
     "QueueItemExtensions": "[3.0.3]",
     "RPA.002Mail": "[1.0.0]",
     "RPA.008Database": "[1.0.0]",
     "UiPath.Database.Activities": "[1.7.1]",
+    "UiPath.DataService.Activities": "[23.10.0]",
     "UiPath.Excel.Activities": "[2.16.2]",
     "UiPath.Mail.Activities": "[1.19.0]",
     "UiPath.MicrosoftOffice365.Activities": "[2.1.1]",
@@ -16,10 +17,17 @@
     "UiPath.UIAutomation.Activities": "[23.10.9]"
   },
   "webServices": [],
-  "entitiesStores": [],
+  "entitiesStores": [
+    {
+      "serviceDocument": ".entities/EntitiesStore.json",
+      "tenantName": "AICenterTests",
+      "namespace": "RPAData",
+      "uniqueReference": "Gjd9QDL2UvOcRqUHTrHrro3m2TrBpVjJdL0HnVXN2Oo="
+    }
+  ],
   "schemaVersion": "4.0",
   "studioVersion": "22.10.5.0",
-  "projectVersion": "1.0.0",
+  "projectVersion": "2.0.0",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -106,8 +114,8 @@
   ],
   "isTemplate": true,
   "templateProjectData": {
-    "defaultProjectDescription": "REFramework customizado para proyecto. Template customizado para procesos de tipo \"Colector\" en los que el transaction item se lee a partir de un excel",
-    "defaultProjectName": "ExtendedREFrameworkTemplate_Colector"
+    "defaultProjectDescription": "REFramework customizado con codigos de error",
+    "defaultProjectName": "ExtendedREFrameworkTemplate"
   },
   "publishData": {},
   "targetFramework": "Windows"
