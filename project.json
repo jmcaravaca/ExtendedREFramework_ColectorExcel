@@ -87,17 +87,31 @@
       },
       {
         "editingStatus": "InProgress",
-        "testCaseId": "fabeb0e6-6972-4e9c-a760-5fb163f16b2a",
-        "testCaseType": "TestCase",
-        "executionTemplateType": "Local",
-        "fileName": "Tests\\ProcessTestCase.xaml"
-      },
-      {
-        "editingStatus": "InProgress",
         "testCaseId": "372ded7d-3d23-488b-b162-7da869587b43",
         "testCaseType": "TestCase",
         "executionTemplateType": "Local",
         "fileName": "Tests\\WorkflowTestCaseTemplate.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "fabeb0e6-6972-4e9c-a760-5fb163f16b2a",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\SuccessfulProcessTestCase.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "7424b625-910f-42bb-96d0-578b7de2391a",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\BusinessExcProcessTestCase.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "5ea93045-da01-4f19-8555-58001b710f23",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\SystemExcProcessTestCase.xaml"
       }
     ],
     "modernBehavior": true,
