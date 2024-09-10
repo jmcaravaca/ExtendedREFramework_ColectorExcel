@@ -3,7 +3,7 @@
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_dt_TransactionData" Type="InArgument(sd:DataTable)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1207,1589</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1094,1589</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -171,7 +171,7 @@ Now.ToString("yyyyMMdd-hhmmss"))]</InArgument>
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <r:SendMail_Information DisplayName="SendMail with Report" sap:VirtualizedContainerService.HintSize="334,519" sap2010:WorkflowViewState.IdRef="SendMail_Information_2" in_Adjuntos="[New String(){reportPath}]" in_Config="[in_Config]" in_ContactLanguage="[in_Config(&quot;MailContactLanguage&quot;).ToString]" in_ContinueError="True" in_FechaComienzoEjec="[CDate(in_Config(&quot;StartProcessingDate&quot;)).ToString(&quot;s&quot;)]" in_MailCC="[in_Config(&quot;MailCC_Exceptions&quot;).ToString]" in_MailCCO="[in_Config(&quot;MailBCC_Exceptions&quot;).ToString]" in_MailTo="[in_Config(&quot;MailTO_Exceptions&quot;).ToString]" in_Texto="[in_Config(&quot;MailFailColector&quot;).ToString]" />
+          <r:SendMail_Information DisplayName="SendMail with Report" sap:VirtualizedContainerService.HintSize="334,519" sap2010:WorkflowViewState.IdRef="SendMail_Information_2" in_Attachments="[New String(){reportPath}]" in_BodyText="[in_Config(&quot;MailFailColector&quot;).ToString]" in_Config="[in_Config]" in_ContactLanguage="[in_Config(&quot;MailContactLanguage&quot;).ToString]" in_ContinueError="True" in_DateTimeStart="[CDate(in_Config(&quot;StartProcessingDate&quot;)).ToString(&quot;s&quot;)]" in_MailCC="[Split(in_Config(&quot;MailCC_Exceptions&quot;).ToString,&quot;;&quot;)]" in_MailCCO="[Split(in_Config(&quot;MailBCC_Exceptions&quot;).ToString,&quot;;&quot;)]" in_MailTo="[Split(in_Config(&quot;MailTO_Exceptions&quot;).ToString,&quot;;&quot;)]" />
         </Sequence>
       </If.Then>
       <If.Else>

@@ -10,7 +10,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1176,864</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1094,864</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="98">
@@ -586,7 +586,7 @@
                   <Transition.To>
                     <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="254,104" sap2010:WorkflowViewState.IdRef="State_2">
                       <State.Entry>
-                        <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="536,1032" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                        <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="706,5762" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -842,7 +842,7 @@
                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
-                                          <r:SendMail_StartProcess in_Adjuntos="{x:Null}" sap2010:Annotation.AnnotationText="" DisplayName="SendMail Start Process" sap:VirtualizedContainerService.HintSize="334,447" sap2010:WorkflowViewState.IdRef="SendMail_StartProcess_2" in_Config="[Config]" in_ContactLanguage="[Config(&quot;MailContactLanguage&quot;).ToString]" in_ContinueError="True" in_FechaComienzoEjec="[CDate(Config(&quot;StartProcessingDate&quot;)).ToString(&quot;s&quot;)]" in_MailCC="[Config(&quot;MailCC_All&quot;).ToString]" in_MailCCO="[Config(&quot;MailBCC_All&quot;).ToString]" in_MailTo="[Config(&quot;MailTO_All&quot;).ToString]">
+                                          <r:SendMail_StartProcess in_Attachments="{x:Null}" sap2010:Annotation.AnnotationText="" DisplayName="SendMail Start Process" sap:VirtualizedContainerService.HintSize="334,447" sap2010:WorkflowViewState.IdRef="SendMail_StartProcess_1" in_Config="[Config]" in_ContactLanguage="[Config(&quot;MailContactLanguage&quot;).ToString]" in_ContinueError="True" in_DateTimeStart="[CDate(Config(&quot;StartProcessingDate&quot;)).ToString(&quot;s&quot;)]" in_MailCC="[Split(Config(&quot;MailCC_All&quot;).ToString,&quot;;&quot;)]" in_MailCCO="[Split(Config(&quot;MailBCC_All&quot;).ToString,&quot;;&quot;)]" in_MailTo="[Split(Config(&quot;MailTO_All&quot;).ToString,&quot;;&quot;)]">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
@@ -886,10 +886,10 @@
                             </Sequence>
                           </TryCatch.Try>
                           <TryCatch.Catches>
-                            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="502,869" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+                            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="672,21" sap2010:WorkflowViewState.IdRef="Catch`1_3">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
@@ -897,7 +897,7 @@
                                 <ActivityAction.Argument>
                                   <DelegateInArgument x:TypeArguments="s:Exception" Name="Exception" />
                                 </ActivityAction.Argument>
-                                <Sequence DisplayName="Error Init" sap:VirtualizedContainerService.HintSize="496,800" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                                <Sequence DisplayName="Error Init" sap:VirtualizedContainerService.HintSize="496,757" sap2010:WorkflowViewState.IdRef="Sequence_32">
                                   <Sequence.Variables>
                                     <Variable x:TypeArguments="x:String" Name="strErrorCode" />
                                     <Variable x:TypeArguments="x:String" Name="strErrorMessage" />
@@ -980,9 +980,9 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <Transition.To>
-                            <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="718,1640" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True">
+                            <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="570,1810" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True">
                               <State.Entry>
-                                <TryCatch DisplayName="Try to close all aplications" sap:VirtualizedContainerService.HintSize="672,1495" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+                                <TryCatch DisplayName="Try to close all aplications" sap:VirtualizedContainerService.HintSize="524,1665" sap2010:WorkflowViewState.IdRef="TryCatch_4">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -990,7 +990,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                   <TryCatch.Try>
-                                    <Sequence DisplayName="End Process sequence" sap:VirtualizedContainerService.HintSize="634,1267" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                                    <Sequence DisplayName="End Process sequence" sap:VirtualizedContainerService.HintSize="634,1932" sap2010:WorkflowViewState.IdRef="Sequence_39">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1030,28 +1030,28 @@
                                           </If.Else>
                                         </If>
                                       </Sequence>
-                                      <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Send &quot;Process Ending&quot; email" sap:VirtualizedContainerService.HintSize="572,163" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                                      <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Send &quot;Process Ending&quot; email" sap:VirtualizedContainerService.HintSize="572,828" sap2010:WorkflowViewState.IdRef="Sequence_38">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                             <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <If Condition="[CType(Config(&quot;SendMail&quot;), Boolean)]" DisplayName="If  SendMail" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="If_22">
+                                        <If Condition="[CType(Config(&quot;SendMail&quot;), Boolean)]" DisplayName="If  SendMail" sap:VirtualizedContainerService.HintSize="410,717" sap2010:WorkflowViewState.IdRef="If_22">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
                                           <If.Then>
-                                            <Sequence sap:VirtualizedContainerService.HintSize="376,586" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                                            <Sequence sap:VirtualizedContainerService.HintSize="376,535" sap2010:WorkflowViewState.IdRef="Sequence_48">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
-                                              <r:SendMail_ProcessFinished in_Adjuntos="{x:Null}" DisplayName="Send Mail Process Ending" sap:VirtualizedContainerService.HintSize="334,498" sap2010:WorkflowViewState.IdRef="SendMail_ProcessFinished_2" in_Config="[Config]" in_ContactLanguage="[Config(&quot;MailContactLanguage&quot;).ToString]" in_ContinueError="True" in_FechaComienzo="[CDate(Config(&quot;StartProcessingDate&quot;)).ToString(&quot;s&quot;)]" in_FechaFinal="[Now.ToString(&quot;s&quot;)]" in_MailCC="[Config(&quot;MailCC_All&quot;).ToString]" in_MailCCO="[Config(&quot;MailBCC_All&quot;).ToString]" in_MailTo="[Config(&quot;MailTO_All&quot;).ToString]">
+                                              <r:SendMail_ProcessFinished in_Attachments="{x:Null}" DisplayName="Send Mail Process Ending" sap:VirtualizedContainerService.HintSize="334,447" sap2010:WorkflowViewState.IdRef="SendMail_ProcessFinished_1" in_Config="[Config]" in_ContactLanguage="[Config(&quot;MailContactLanguage&quot;).ToString]" in_ContinueError="True" in_DateTimeEnd="[Now.ToString(&quot;s&quot;)]" in_MailCC="[Split(Config(&quot;MailCC_All&quot;).ToString,&quot;;&quot;)]" in_MailCCO="[Split(Config(&quot;MailBCC_All&quot;).ToString,&quot;;&quot;)]" in_MailTo="[Split(Config(&quot;MailTO_All&quot;).ToString,&quot;;&quot;)]">
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1074,7 +1074,7 @@
                                     </Sequence>
                                   </TryCatch.Try>
                                   <TryCatch.Catches>
-                                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="638,21" sap2010:WorkflowViewState.IdRef="Catch`1_5">
+                                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="490,21" sap2010:WorkflowViewState.IdRef="Catch`1_5">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1102,9 +1102,9 @@
                                     </Catch>
                                   </TryCatch.Catches>
                                   <TryCatch.Finally>
-                                    <If Condition="[SystemException IsNot Nothing AndAlso (Config Is Nothing OrElse Convert.ToBoolean(Config(&quot;ShouldMarkJobAsFaulted&quot;)))]" DisplayName="If SystemException IsNot Nothing" sap:VirtualizedContainerService.HintSize="486,1488" sap2010:WorkflowViewState.IdRef="If_14">
+                                    <If Condition="[SystemException IsNot Nothing AndAlso (Config Is Nothing OrElse Convert.ToBoolean(Config(&quot;ShouldMarkJobAsFaulted&quot;)))]" DisplayName="If SystemException IsNot Nothing" sap:VirtualizedContainerService.HintSize="486,1437" sap2010:WorkflowViewState.IdRef="If_14">
                                       <If.Then>
-                                        <Sequence DisplayName="Mark as Faulted" sap:VirtualizedContainerService.HintSize="452,1306" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                                        <Sequence DisplayName="Mark as Faulted" sap:VirtualizedContainerService.HintSize="452,1255" sap2010:WorkflowViewState.IdRef="Sequence_40">
                                           <Sequence.Variables>
                                             <Variable x:TypeArguments="x:String" Name="strErrorCode" />
                                             <Variable x:TypeArguments="x:String" Name="strErrorMessage" />
@@ -1124,17 +1124,18 @@
                                               <OutArgument x:TypeArguments="x:String" x:Key="out_ExceptionType">[strExceptionType]</OutArgument>
                                             </ui:InvokeWorkflowFile.Arguments>
                                           </ui:InvokeWorkflowFile>
-                                          <If Condition="[CType(Config(&quot;SendMail&quot;), Boolean)]" DisplayName="If SendMail End Process" sap:VirtualizedContainerService.HintSize="410,870" sap2010:WorkflowViewState.IdRef="If_24">
+                                          <If Condition="[CType(Config(&quot;SendMail&quot;), Boolean)]" DisplayName="If SendMail End Process" sap:VirtualizedContainerService.HintSize="410,819" sap2010:WorkflowViewState.IdRef="If_24">
                                             <If.Then>
-                                              <Sequence sap:VirtualizedContainerService.HintSize="376,688" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                                              <Sequence sap:VirtualizedContainerService.HintSize="376,637" sap2010:WorkflowViewState.IdRef="Sequence_50">
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
-                                                <r:SendMail_ProcessFaulted in_Adjuntos="{x:Null}" DisplayName="Send Mail Faulted" sap:VirtualizedContainerService.HintSize="334,600" sap2010:WorkflowViewState.IdRef="SendMail_ProcessFaulted_2" in_Config="[Config]" in_ContactLanguage="[Config(&quot;MailContactLanguage&quot;).ToString]" in_ContinueError="True" in_DescripcionExcep="[strErrorMessage]" in_FechaEjecucion="[CDate(Config(&quot;StartProcessingDate&quot;)).ToString(&quot;s&quot;)]" in_IDEjecucion="[CDate(Config(&quot;StartProcessingDate&quot;)).ToString(&quot;s&quot;)]" in_MailCC="[Config(&quot;MailCC_Exceptions&quot;).ToString]" in_MailCCO="[Config(&quot;MailBCC_Exceptions&quot;).ToString]" in_MailTo="[Config(&quot;MailTO_Exceptions&quot;).ToString]" in_Modulo="[Config(&quot;ProcessModule&quot;).ToString]">
+                                                <r:SendMail_ProcessFaulted in_Attachments="{x:Null}" sap2010:Annotation.AnnotationText="" DisplayName="Send Mail Faulted" sap:VirtualizedContainerService.HintSize="334,549" sap2010:WorkflowViewState.IdRef="SendMail_ProcessFaulted_1" in_Config="[Config]" in_ContactLanguage="[Config(&quot;MailContactLanguage&quot;).ToString]" in_ContinueError="True" in_DateTimeEnd="[CDate(Config(&quot;StartProcessingDate&quot;)).ToString(&quot;s&quot;)]" in_ExceptionDetails="[strErrorMessage]" in_MailCC="[Split(Config(&quot;MailCC_Exceptions&quot;).ToString, &quot;;&quot;)]" in_MailCCO="[Split(Config(&quot;MailBCC_Exceptions&quot;).ToString,&quot;;&quot;)]" in_MailTo="[Split(Config(&quot;MailTO_Exceptions&quot;).ToString, &quot;;&quot;)]" in_Subprocess="[Config(&quot;ProcessModule&quot;).ToString]">
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
                                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                     </scg:Dictionary>
