@@ -1,6 +1,7 @@
 .local
 .project
-.entities
+.entities/*
+!.entities/EntitiesStore.json
 .settings
 .tmh
 .variations/config.json
