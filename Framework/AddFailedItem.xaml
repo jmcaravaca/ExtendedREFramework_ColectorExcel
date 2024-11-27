@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="AddTransactionItem" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:r="clr-namespace:RPA_008Database;assembly=RPA.008Database" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="AddTransactionItem" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:r="clr-namespace:RPA_008Database;assembly=RPA.008Database" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Reference" Type="InArgument(x:String)" />
     <x:Property Name="in_DatabaseTableName" Type="InArgument(x:String)" />
@@ -7,11 +7,12 @@
     <x:Property Name="in_ErrorReason" Type="InArgument(x:String)" />
     <x:Property Name="in_ErrorDetails" Type="InArgument(x:String)" />
     <x:Property Name="in_QueueNameAdd" Type="InArgument(x:String)" />
+    <x:Property Name="in_RowItem" Type="InArgument(sd:DataRow)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1168,4673.333333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1134,4662</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AddTransactionItem_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -112,9 +113,11 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Use this workflow if this process is not the last one before reporting.&#xA;&#xA;Add a transaction item to a queue in Orchestrator. Checks that the transaction item is unique (by Reference) and also adds the data to the database table (XXXX_Main). The item is marked as failed immediately so it shows in the final report.&#xA;&#xA;If item cannot be added to queue, it will delete the record in the database&#xA;" DisplayName="Add Failed Item" sap:VirtualizedContainerService.HintSize="752.6666666666666,4608.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Use this workflow if this process is not the last one before reporting.&#xA;&#xA;Add a transaction item to a queue in Orchestrator. Checks that the transaction item is unique (by Reference) and also adds the data to the database table (XXXX_Main). The item is marked as failed immediately so it shows in the final report.&#xA;&#xA;If item cannot be added to queue, it will delete the record in the database&#xA;" DisplayName="Add Failed Item" sap:VirtualizedContainerService.HintSize="753,4597" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="TransactionItemData" />
     </Sequence.Variables>
@@ -124,9 +127,9 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Add Failed Item" sap:VirtualizedContainerService.HintSize="690.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Adding failed item&quot;]" />
-    <ui:Comment DisplayName="Comment Add transaction item" sap:VirtualizedContainerService.HintSize="690.6666666666666,56.666666666666664" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// Add transaction item data as required" />
-    <ui:MultipleAssign DisplayName="Multiple Assign Item Data" sap:VirtualizedContainerService.HintSize="690.6666666666666,148" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:LogMessage DisplayName="Log Message Add Failed Item" sap:VirtualizedContainerService.HintSize="691,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Adding failed item&quot;]" />
+    <ui:Comment DisplayName="Comment Add transaction item" sap:VirtualizedContainerService.HintSize="691,75" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// Add transaction item data as required. Change reference as required" />
+    <ui:MultipleAssign DisplayName="Multiple Assign Item Data" sap:VirtualizedContainerService.HintSize="691,147" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -148,32 +151,32 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <If Condition="[CBool(in_Config(&quot;EnforceSecondDataSource&quot;))]" DisplayName="If Enforce Second Data Source" sap:VirtualizedContainerService.HintSize="690.6666666666666,1533.3333333333333" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[CBool(in_Config(&quot;EnforceSecondDataSource&quot;))]" DisplayName="If Enforce Second Data Source" sap:VirtualizedContainerService.HintSize="691,1519" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="610,1349.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_13">
+        <Sequence sap:VirtualizedContainerService.HintSize="610,1337" sap2010:WorkflowViewState.IdRef="Sequence_13">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[CBool(in_Config(&quot;UseDB&quot;))]" DisplayName="If Use DB" sap:VirtualizedContainerService.HintSize="568,863.3333333333334" sap2010:WorkflowViewState.IdRef="If_3">
+          <If Condition="[CBool(in_Config(&quot;UseDB&quot;))]" DisplayName="If Use DB" sap:VirtualizedContainerService.HintSize="568,850" sap2010:WorkflowViewState.IdRef="If_3">
             <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="534,679.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_9">
+              <Sequence sap:VirtualizedContainerService.HintSize="534,668" sap2010:WorkflowViewState.IdRef="Sequence_9">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:RetryScope DisplayName="Retry Create Item in DB" sap:VirtualizedContainerService.HintSize="492,592" sap2010:WorkflowViewState.IdRef="RetryScope_3">
+                <ui:RetryScope DisplayName="Retry Create Item in DB" sap:VirtualizedContainerService.HintSize="492,580" sap2010:WorkflowViewState.IdRef="RetryScope_3">
                   <ui:RetryScope.ActivityBody>
                     <ActivityAction>
-                      <Sequence DisplayName="Action Retry Create item db" sap:VirtualizedContainerService.HintSize="450,413.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                      <Sequence DisplayName="Action Retry Create item db" sap:VirtualizedContainerService.HintSize="450,405" sap2010:WorkflowViewState.IdRef="Sequence_8">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <r:InsertItemData DisplayName="InsertItemData DB" sap:VirtualizedContainerService.HintSize="388,302.6666666666667" sap2010:WorkflowViewState.IdRef="InsertItemData_2" in_CheckReference="True" in_Config="[in_Config]" in_ItemDataTable="[in_DatabaseTableName]" in_TransactionItemData="[TransactionItemData]" in_TransactionItemReference="[in_Reference]" />
+                        <r:InsertItemData DisplayName="InsertItemData DB" sap:VirtualizedContainerService.HintSize="388,294" sap2010:WorkflowViewState.IdRef="InsertItemData_2" in_CheckReference="True" in_Config="[in_Config]" in_ItemDataTable="[in_DatabaseTableName]" in_TransactionItemData="[TransactionItemData]" in_TransactionItemReference="[in_Reference]" />
                       </Sequence>
                     </ActivityAction>
                   </ui:RetryScope.ActivityBody>

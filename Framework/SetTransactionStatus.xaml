@@ -15,7 +15,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1094,1270</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1134,1270</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SetTransactionStatus_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="82">
@@ -134,6 +134,7 @@
       <AssemblyReference>System.Text.Encoding.CodePages</AssemblyReference>
       <AssemblyReference>QueueItemExtensions</AssemblyReference>
       <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Flowchart sap2010:Annotation.AnnotationText="Set and log the transaction's status along with extra log fields. &#xA;There can be three possible statuses: Success, Business Exception and System Exception.&#xA;&#xA;Business Rule Exception characterizes an irregular situation according to the process's rules and prevents the transaction to be processed. The transaction is not retried in this case, since the result will be the same until the problem that causes the exception is solved.&#xA;For example, it can be considered a BusinessRuleException if a process expects to read an email's attachment, but the sender didn't attach any file. In this case, immediate retries of the transaction will not yield a different result.&#xA;&#xA;On the other hand, system exceptions are characterized by exceptions whose types are different than BusinessRuleException. When this kind of exception happens, the transaction item can be retried after closing and reopening the applications involved in the process. The rationale behind this is that the exception was caused by a problem in the applications, which might be solved by restarting them.&#xA;&#xA;If Orchestrator queues are the source of transactions, the Set Transaction Status activity is used to update the status. In addition, the retry mechanism is also implemented by Orchestrator.&#xA;&#xA;If Orchestrator queues are not used, the status can be set, for example, by writing to a specific column in a spreadsheet. In such cases, the retry mechanism is covered by the framework and the number of retries is defined in the configuration file.&#xA;&#xA;At the end, io_TransactionNumber is incremented, which makes the framework get the next transaction to be processed." DisplayName="Set Transaction Status" sap:VirtualizedContainerService.HintSize="722,1205" sap2010:WorkflowViewState.IdRef="Flowchart_2">
@@ -295,10 +296,10 @@
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">110,715.6</av:Point>
-                  <av:Size x:Key="ShapeSize">200,83</av:Size>
+                  <av:Size x:Key="ShapeSize">200,81</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence DisplayName="Increment transaction index and reset retries" sap:VirtualizedContainerService.HintSize="200,83" sap2010:WorkflowViewState.IdRef="Sequence_12">
+              <Sequence DisplayName="Increment transaction index and reset retries" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_12">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -467,7 +468,7 @@
                     <Sequence DisplayName="" sap2010:WorkflowViewState.IdRef="Sequence_27" />
                   </If.Else>
                 </If>
-                <ui:MultipleAssign DisplayName="Multiple Assign Business Exception" sap:VirtualizedContainerService.HintSize="596,148" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
+                <ui:MultipleAssign DisplayName="Multiple Assign Business Exception" sap:VirtualizedContainerService.HintSize="596,147" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
                   <ui:MultipleAssign.AssignOperations>
                     <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                       <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
@@ -489,7 +490,7 @@
                     </scg:List>
                   </ui:MultipleAssign.AssignOperations>
                 </ui:MultipleAssign>
-                <Sequence sap2010:Annotation.AnnotationText="Includes custom log fields to the log message.&#xA;They are removed after logging to prevent duplicated status messages about a single transaction." DisplayName="Log business exception with additional logging fields" sap:VirtualizedContainerService.HintSize="596,2143" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                <Sequence sap2010:Annotation.AnnotationText="Includes custom log fields to the log message.&#xA;They are removed after logging to prevent duplicated status messages about a single transaction." DisplayName="Log business exception with additional logging fields" sap:VirtualizedContainerService.HintSize="596,2140" sap2010:WorkflowViewState.IdRef="Sequence_13">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -518,9 +519,9 @@
                       </scg:List>
                     </ui:RemoveLogFields.Fields>
                   </ui:RemoveLogFields>
-                  <Switch x:TypeArguments="x:String" DisplayName="Switch Error Code" Expression="[strErrorCodeBE]" sap:VirtualizedContainerService.HintSize="534,1549" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+                  <Switch x:TypeArguments="x:String" DisplayName="Switch Error Code" Expression="[strErrorCodeBE]" sap:VirtualizedContainerService.HintSize="534,1546" sap2010:WorkflowViewState.IdRef="Switch`1_2">
                     <Switch.Default>
-                      <Sequence sap:VirtualizedContainerService.HintSize="496,1387" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                      <Sequence sap:VirtualizedContainerService.HintSize="496,1384" sap2010:WorkflowViewState.IdRef="Sequence_30">
                         <Sequence.Variables>
                           <Variable x:TypeArguments="x:String" Name="tItemReferenceBE" />
                         </Sequence.Variables>
@@ -529,7 +530,7 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Assign sap2010:Annotation.AnnotationText="Add the transactionitem reference as required" DisplayName="Assign Transactin Item Reference" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_14">
+                        <Assign sap2010:Annotation.AnnotationText="Add the transactionitem reference as required" DisplayName="Assign Transactin Item Reference" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="Assign_14">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:String">[tItemReferenceBE]</OutArgument>
                           </Assign.To>
@@ -542,23 +543,40 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </Assign>
-                        <If Condition="[Not String.IsNullOrEmpty(in_Config(&quot;QueueNameNextStep&quot;).ToString) And _&#xA;CBool(in_Config(&quot;AddFailedItem&quot;))]" DisplayName="If There's a next step BE" sap:VirtualizedContainerService.HintSize="434,416" sap2010:WorkflowViewState.IdRef="If_9">
+                        <If Condition="[Not String.IsNullOrEmpty(in_Config(&quot;QueueNameNextStep&quot;).ToString) And _&#xA;CBool(in_Config(&quot;AddFailedItem&quot;))]" DisplayName="If There's a next step BE" sap:VirtualizedContainerService.HintSize="434,414" sap2010:WorkflowViewState.IdRef="If_9">
                           <If.Then>
-                            <Sequence sap:VirtualizedContainerService.HintSize="376,233" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                            <Sequence sap:VirtualizedContainerService.HintSize="376,232" sap2010:WorkflowViewState.IdRef="Sequence_31">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="" DisplayName="Framework\AddFailedItem_.xaml BE" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Framework\AddFailedItem.xaml">
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="" DisplayName="Framework\AddFailedItem_.xaml BE" sap:VirtualizedContainerService.HintSize="334,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Framework\AddFailedItem.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_Reference">[tItemReferenceBE]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_DatabaseTableName">[in_Config("ItemTableNextStep").ToString]</InArgument>
-                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_ErrorType">Business</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_ErrorReason">[strErrorCodeBE]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_ErrorDetails">[String.Format("{0}!#Exception Workflow:{1}", strErrorMessageBE, strExceptionWorkflowBE)]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_QueueNameAdd">[in_Config("QueueNameNextStep").ToString]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_Reference">
+                                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="tItemReferenceBE" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_DatabaseTableName">
+                                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ItemTableNextStep&quot;).ToString" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                                    <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_ErrorType">
+                                    <Literal x:TypeArguments="x:String">Business</Literal>
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_ErrorReason">
+                                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strErrorCodeBE" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_ErrorDetails">
+                                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="String.Format(&quot;{0}!#Exception Workflow:{1}&quot;, strErrorMessageBE, strExceptionWorkflowBE)" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_QueueNameAdd">
+                                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;QueueNameNextStep&quot;).ToString" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_RowItem">
+                                    <VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="io_TransactionItem" />
+                                  </InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -611,7 +629,7 @@
                   <av:Size x:Key="ShapeSize">200,168</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence sap2010:Annotation.AnnotationText="If a system exception occurs during the process, the transaction item's status is updated as Failed (Exception Type: Application)." DisplayName="System Exception" sap:VirtualizedContainerService.HintSize="717,4048" sap2010:WorkflowViewState.IdRef="Sequence_17">
+              <Sequence sap2010:Annotation.AnnotationText="If a system exception occurs during the process, the transaction item's status is updated as Failed (Exception Type: Application)." DisplayName="System Exception" sap:VirtualizedContainerService.HintSize="634,4049" sap2010:WorkflowViewState.IdRef="Sequence_17">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:Boolean" Name="QueueRetry" />
                   <Variable x:TypeArguments="x:String" Name="ScreenshotPath" />
@@ -627,8 +645,8 @@
                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message (Consecutive exceptions)" sap:VirtualizedContainerService.HintSize="655,141" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Info" Message="[&quot;Consecutive system exception counter is &quot; + io_ConsecutiveSystemExceptions.ToString + &quot;.&quot;]" />
-                <Assign DisplayName="Assign QueryRetry" sap:VirtualizedContainerService.HintSize="655,82" sap2010:WorkflowViewState.IdRef="Assign_10">
+                <ui:LogMessage DisplayName="Log Message (Consecutive exceptions)" sap:VirtualizedContainerService.HintSize="572,141" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Info" Message="[&quot;Consecutive system exception counter is &quot; + io_ConsecutiveSystemExceptions.ToString + &quot;.&quot;]" />
+                <Assign DisplayName="Assign QueryRetry" sap:VirtualizedContainerService.HintSize="572,82" sap2010:WorkflowViewState.IdRef="Assign_10">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Boolean">[QueueRetry]</OutArgument>
                   </Assign.To>
@@ -636,7 +654,7 @@
                     <InArgument x:TypeArguments="x:Boolean">[io_TransactionItem isNot Nothing AndAlso (io_TransactionItem.GetType is GetType(UiPath.Core.QueueItem))]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Framework\GetErrorInfo.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="655,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Framework\GetErrorInfo.xaml">
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Framework\GetErrorInfo.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="572,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Framework\GetErrorInfo.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
                     <InArgument x:TypeArguments="s:Exception" x:Key="in_Exception">[in_SystemException]</InArgument>
@@ -645,13 +663,13 @@
                     <OutArgument x:TypeArguments="x:String" x:Key="out_ExceptionType">[strExceptionTypeSE]</OutArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get Exception WorkflowPath.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="655,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="Framework\Get Exception WorkflowPath.xaml">
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get Exception WorkflowPath.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="572,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="Framework\Get Exception WorkflowPath.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <InArgument x:TypeArguments="s:Exception" x:Key="in_Exception">[in_SystemException]</InArgument>
                     <OutArgument x:TypeArguments="x:String" x:Key="out_strWorkflowFile">[strExceptionWorkflowSE]</OutArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
-                <TryCatch sap2010:Annotation.AnnotationText="Take a screenshot of the current state of the screen to facilitate debugging." DisplayName="Try taking screenshot" sap:VirtualizedContainerService.HintSize="655,378" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+                <TryCatch sap2010:Annotation.AnnotationText="Take a screenshot of the current state of the screen to facilitate debugging." DisplayName="Try taking screenshot" sap:VirtualizedContainerService.HintSize="572,372" sap2010:WorkflowViewState.IdRef="TryCatch_5">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -660,7 +678,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <TryCatch.Try>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\TakeScreenshot.xaml">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\TakeScreenshot.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
                         <InArgument x:TypeArguments="x:String" x:Key="in_Folder">[in_Config("ExScreenshotsFolderPath").ToString]</InArgument>
                         <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">[ScreenshotPath]</InOutArgument>
@@ -668,7 +686,7 @@
                     </ui:InvokeWorkflowFile>
                   </TryCatch.Try>
                   <TryCatch.Catches>
-                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,22" sap2010:WorkflowViewState.IdRef="Catch`1_5">
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_5">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -679,12 +697,12 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="s:Exception" Name="Exception" />
                         </ActivityAction.Argument>
-                        <ui:LogMessage DisplayName="Log message (Screenshot not taken)" sap:VirtualizedContainerService.HintSize="334,143" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Warn" Message="[&quot;Failed to take screenshot: &quot;+Exception.Message+&quot; at Source: &quot;+Exception.Source+&quot; At Source: &quot;+Exception.Source]" />
+                        <ui:LogMessage DisplayName="Log message (Screenshot not taken)" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Warn" Message="[&quot;Failed to take screenshot: &quot;+Exception.Message+&quot; at Source: &quot;+Exception.Source+&quot; At Source: &quot;+Exception.Source]" />
                       </ActivityAction>
                     </Catch>
                   </TryCatch.Catches>
                 </TryCatch>
-                <If Condition="[QueueRetry]" DisplayName="If TransactionItem is a QueueItem (System Exception)" sap:VirtualizedContainerService.HintSize="655,53" sap2010:WorkflowViewState.IdRef="If_6">
+                <If Condition="[QueueRetry]" DisplayName="If TransactionItem is a QueueItem (System Exception)" sap:VirtualizedContainerService.HintSize="572,52" sap2010:WorkflowViewState.IdRef="If_6">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -742,7 +760,7 @@
                     <Sequence DisplayName="" sap2010:WorkflowViewState.IdRef="Sequence_34" />
                   </If.Else>
                 </If>
-                <ui:MultipleAssign DisplayName="Multiple Assign System Exception" sap:VirtualizedContainerService.HintSize="655,148" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+                <ui:MultipleAssign DisplayName="Multiple Assign System Exception" sap:VirtualizedContainerService.HintSize="572,147" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
                   <ui:MultipleAssign.AssignOperations>
                     <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                       <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
@@ -764,7 +782,7 @@
                     </scg:List>
                   </ui:MultipleAssign.AssignOperations>
                 </ui:MultipleAssign>
-                <Sequence DisplayName="Actions last Retry" sap:VirtualizedContainerService.HintSize="655,1623" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                <Sequence DisplayName="Actions last Retry" sap:VirtualizedContainerService.HintSize="572,1623" sap2010:WorkflowViewState.IdRef="Sequence_33">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Int32" Name="maxRetries" />
                   </Sequence.Variables>
@@ -813,13 +831,30 @@
                               </sap:WorkflowViewStateService.ViewState>
                               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Framework\AddFailedItem_.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Framework\AddFailedItem.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_Reference">[tItemReference]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_DatabaseTableName">[in_Config("ItemTableNextStep").ToString]</InArgument>
-                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_ErrorType">Application</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_ErrorReason">[strErrorCodeSE]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_ErrorDetails">[String.Format("{0}!#Exception Workflow:{1}", strErrorMessageSE, strExceptionWorkflowSE)]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_QueueNameAdd">[in_Config("QueueNameNextStep").ToString]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_Reference">
+                                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="tItemReference" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_DatabaseTableName">
+                                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ItemTableNextStep&quot;).ToString" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                                    <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_ErrorType">
+                                    <Literal x:TypeArguments="x:String">Application</Literal>
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_ErrorReason">
+                                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strErrorCodeSE" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_ErrorDetails">
+                                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="String.Format(&quot;{0}!#Exception Workflow:{1}&quot;, strErrorMessageSE, strExceptionWorkflowSE)" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_QueueNameAdd">
+                                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;QueueNameNextStep&quot;).ToString" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_RowItem">
+                                    <VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="io_TransactionItem" />
+                                  </InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                               </ui:InvokeWorkflowFile>
                             </Sequence>
@@ -848,7 +883,7 @@
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <r:SendMail_BusinessException in_Attachments="{x:Null}" DisplayName="Send Mail Business Exception BE" sap:VirtualizedContainerService.HintSize="334,396" sap2010:WorkflowViewState.IdRef="SendMail_BusinessException_2" in_Config="[in_Config]" in_ContactLanguage="[in_Config(&quot;MailContactLanguage&quot;).ToString]" in_ContinueError="True" in_ExceptionCode="[strErrorCodeSE]" in_ExceptionDetails="[strErrorMessageSE]" in_MailCC="[Split(in_Config(&quot;MailCC_Exceptions&quot;).ToString,&quot;;&quot;)]" in_MailCCO="[Split(in_Config(&quot;MailBCC_Exceptions&quot;).ToString,&quot;;&quot;)]" in_MailTo="[Split(in_Config(&quot;MailTO_Exceptions&quot;).ToString,&quot;;&quot;)]" in_TransactionID="[tItemReference]" />
+                              <r:SendMail_BusinessException in_Attachments="{x:Null}" DisplayName="Send Mail Business Exception SE" sap:VirtualizedContainerService.HintSize="334,396" sap2010:WorkflowViewState.IdRef="SendMail_BusinessException_2" in_Config="[in_Config]" in_ContactLanguage="[in_Config(&quot;MailContactLanguage&quot;).ToString]" in_ContinueError="True" in_ExceptionCode="[strErrorCodeSE]" in_ExceptionDetails="[strErrorMessageSE]" in_MailCC="[Split(in_Config(&quot;MailCC_Exceptions&quot;).ToString,&quot;;&quot;)]" in_MailCCO="[Split(in_Config(&quot;MailBCC_Exceptions&quot;).ToString,&quot;;&quot;)]" in_MailTo="[Split(in_Config(&quot;MailTO_Exceptions&quot;).ToString,&quot;;&quot;)]" in_TransactionID="[tItemReference]" />
                             </Sequence>
                           </If.Then>
                           <If.Else>
@@ -874,7 +909,7 @@
                     </If.Else>
                   </If>
                 </Sequence>
-                <ui:AddLogFields DisplayName="Add transaction log fields (System Exception)" sap:VirtualizedContainerService.HintSize="655,90" sap2010:WorkflowViewState.IdRef="AddLogFields_6">
+                <ui:AddLogFields DisplayName="Add transaction log fields (System Exception)" sap:VirtualizedContainerService.HintSize="572,90" sap2010:WorkflowViewState.IdRef="AddLogFields_6">
                   <ui:AddLogFields.Fields>
                     <InArgument x:TypeArguments="x:String" x:Key="logF_TransactionStatus">ApplicationException</InArgument>
                     <InArgument x:TypeArguments="x:String" x:Key="logF_TransactionNumber">[io_TransactionNumber.ToString]</InArgument>
@@ -883,7 +918,7 @@
                     <InArgument x:TypeArguments="x:String" x:Key="logF_TransactionField2">[in_TransactionField2]</InArgument>
                   </ui:AddLogFields.Fields>
                 </ui:AddLogFields>
-                <Assign DisplayName="Increment consecutive exceptions counter" sap:VirtualizedContainerService.HintSize="655,83" sap2010:WorkflowViewState.IdRef="Assign_12">
+                <Assign DisplayName="Increment consecutive exceptions counter" sap:VirtualizedContainerService.HintSize="572,82" sap2010:WorkflowViewState.IdRef="Assign_12">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Int32">[io_ConsecutiveSystemExceptions]</OutArgument>
                   </Assign.To>
